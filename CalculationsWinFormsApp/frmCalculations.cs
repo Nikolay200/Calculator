@@ -20,7 +20,7 @@ namespace CalculationsWinFormsApp
         public frmCalculations()
         {
             InitializeComponent();
-            // Creates a new instance of Calculator.
+            
             Calculator1 = new Calculator();
             Calculator1.FactorialComplete += new
             Calculator.FactorialCompleteHandler(this.FactorialHandler);
@@ -40,9 +40,9 @@ namespace CalculationsWinFormsApp
         private void btnFactorial1_Click(object sender, EventArgs e)
         {
             Calculator1.varFact1 = int.Parse(txtValue.Text);
-            // Disables the btnFactorial1 until this calculation is complete.
+            
             btnFactorial1.Enabled = false;
-            //Calculator1.Factorial();
+            
             Calculator1.ChooseThreads(1);
         }
 
@@ -50,7 +50,7 @@ namespace CalculationsWinFormsApp
         {
             Calculator1.varFact2 = int.Parse(txtValue.Text);
             btnFactorial2.Enabled = false;
-            //Calculator1.FactorialMinusOne();
+            
             Calculator1.ChooseThreads(2);
         }
 
@@ -58,7 +58,7 @@ namespace CalculationsWinFormsApp
         {
             Calculator1.varAddTwo = int.Parse(txtValue.Text);
             btnAddTwo.Enabled = false;
-            //Calculator1.AddTwo();
+            
             Calculator1.ChooseThreads(3);
         }
 
@@ -66,14 +66,14 @@ namespace CalculationsWinFormsApp
         {
             Calculator1.varLoopValue = int.Parse(txtValue.Text);
             btnRunLoops.Enabled = false;
-            // Lets the user know that a loop is running
+            
             lblRunLoops.Text = "Looping";
-            //Calculator1.RunALoop();
+            
             Calculator1.ChooseThreads(4);
         }
 
         private void FactorialHandler(double Value, double Calculations)
-        // Displays the returned value in the appropriate label.
+        
         {
             this.BeginInvoke(new FHandler(FactHandler), new Object[]
       {Value, Calculations});
@@ -100,9 +100,9 @@ namespace CalculationsWinFormsApp
         public void FactHandler(double Value, double Calculations)
         {
             lblFactorial1.Text = Value.ToString();
-            // Re-enables the button so it can be used again.
+            
             btnFactorial1.Enabled = true;
-            // Updates the label that displays the total calculations performed
+            
             lblTotalCalculations.Text = "TotalCalculations are " +
                Calculations.ToString();
         }
